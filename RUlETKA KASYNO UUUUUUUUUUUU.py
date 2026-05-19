@@ -1,3 +1,5 @@
+#Z DEDYKACJĄ DLA MARTINA AMLICKIEGO, NAJWIĘKSZEGO HAZARDZi... - ZNACZY BIZNESMANA W BRODNICY!
+
 import random
 import time
 
@@ -15,6 +17,7 @@ def zakladzik():
 
 kasa = 200
 
+
 pierwszy = False
 game = True
 
@@ -27,9 +30,9 @@ while game == True:
             podane = True
         else:
             print ("ERROR: Nie masz wystarczających środków\n")
-            zakladzik()
+            zakladnik = zakladzik()
     
-    liczba = input("Podaj swój los. Możliwe losy:\nod 0 do 36\ngreen, red, black\n\n\n")
+    liczba = input("Podaj swój los. Możliwe losy:\nod 0 do 36\ngreen, red, black\n\n")
     if liczba:
         if liczba not in ["red","green","black",]:
             liczba = int(liczba)
@@ -63,9 +66,19 @@ while game == True:
         kasa = kasa - zakladnik
 
     if kasa == 0:
-        print ("Brak środków na koncie. Prosimy o opuszczenie kasyna. To nie schronisko dla bezdomnych.")
-        game = False
-        time.sleep(10)
+        kontynuacja = input ("Czy chcesz kontynuować? y/n ")
+        if kontynuacja == "y":
+            print ("Tajemniczy bezdomny dał ci dotacje w wysokości 200 zł!\n\n")
+            kasa = 200
+            continue
+        
+        elif kontynuacja == "n":
+            print ("Brak środków na koncie. Prosimy o opuszczenie kasyna. To nie schronisko dla bezdomnych.")
+            game = False
+            time.sleep(10)
+        
+        else:
+            print ("y/n")
     
     elif pierwszy == False and kasa > 10000:
         print ("Brawo! Zostałeś użytkownikiem VIP! Użytkownikom VIP zabrania się gry w kasynie, ponieważ za dużo już zabrali.\n Prosimy o opuszczenie kasyna.")
